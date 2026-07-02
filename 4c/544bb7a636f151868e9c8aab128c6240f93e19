@@ -1,0 +1,32 @@
+src/index.ts
+  s_d9cc9f5d8bf35c::t_d1c6b2816a02c7 37
+  s_d9cc9f5d8bf35c::t_8f73377b547a2c 22
+lib/index.js
+  s_d9cc9f5d8bf35c::t_eb4377a4feb8b5 29,45
+src/types.ts
+  s_d9cc9f5d8bf35c::t_8510686e85215f 40
+lib/types.d.ts
+  s_d9cc9f5d8bf35c::t_eb4377a4feb8b5 42
+lib/helpers.js
+  s_d9cc9f5d8bf35c::t_eb4377a4feb8b5 12-18,31-58,60-68
+.gitignore
+  s_d9cc9f5d8bf35c::t_bbee6666f85411 1-4
+src/helpers.ts
+  s_d9cc9f5d8bf35c::t_389d32ac086e77 19-23,25-28,30-43,46-59
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.9",
+  "base_commit_sha": "4c544bb7a636f151868e9c8aab128c6240f93e19",
+  "prompts": {},
+  "sessions": {
+    "s_d9cc9f5d8bf35c": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "7f6e095a-ded2-4769-a399-6ca0d85799cb",
+        "model": "default"
+      },
+      "human_author": "Pavel Kuzmin <Virus191288@gmail.com>"
+    }
+  }
+}
