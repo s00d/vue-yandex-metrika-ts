@@ -1,16 +1,17 @@
 # Changelog
-All notable changes to this project will be documented in this file.
 
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
-and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+## 2.0.0
 
-## [1.0.0] - 2019-09-16
-### Added
-- init project
-
-
-
-
-
-
-
+- Build output moved from `lib/` to `dist/` with dual CJS/ESM bundles
+- Added Vue 3 support via `vue-yandex-metrika-ts/vue3`
+- Added explicit Vue 2 subpath `vue-yandex-metrika-ts/vue2`
+- Root import remains Vue 2 compatible with 1.x usage
+- Added `vue-yandex-metrika-ts/helpers` subpath with `loadMetrikaScript`, `createMetrika`, `startTracking`
+- Replaced callback-based `loadScript` with Promise-based `loadMetrikaScript`
+- Development mode no longer loads Yandex tag.js (mock metrika only)
+- Vite 8 library build and Vitest coverage
+- GitHub Actions CI (replaces Travis)
+- Vue 3 `useMetrika()` composable and `metrikaInjectionKey`
+- Complete Metrika API types: `firstPartyParams`, `firstPartyParamsHashed`
+- Visit params support arbitrary keys (`MetrikaVisitParams`)
+- Optional `hit()` url; extended counter init options (`sendTitle`, `ssr`, `ecommerce`, `accurateTrackBounce`)

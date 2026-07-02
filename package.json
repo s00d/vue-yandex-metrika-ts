@@ -1,22 +1,7 @@
 {
   "name": "vue-yandex-metrika-ts",
-  "version": "1.0.6",
-  "description": "",
-  "main": "lib/index.js",
-  "types": "lib/index.d.ts",
-  "files": [
-    "lib"
-  ],
-  "scripts": {
-    "clean": "rimraf lib && rimraf dist",
-    "prepublish": "npm run clean && npm run build",
-    "prepare": "npm run build",
-    "build": "tsc"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/s00d/vue-yandex-metrika-ts.git"
-  },
+  "version": "2.0.0",
+  "description": "Vue plugin for Yandex Metrika with TypeScript support",
   "keywords": [
     "vue",
     "typescript",
@@ -35,20 +20,148 @@
     "Яндекс Метрика",
     "яндекс метрика"
   ],
-  "license": "MIT",
+  "homepage": "https://github.com/s00d/vue-yandex-metrika-ts#readme",
   "bugs": {
     "url": "https://github.com/s00d/vue-yandex-metrika-ts/issues"
   },
-  "homepage": "https://github.com/s00d/vue-yandex-metrika-ts",
-  "devDependencies": {
-    "@types/node": "^14.14.10",
-    "@types/rimraf": "^3.0.0",
-    "@types/vue": "^2.0.0",
-    "@types/vue-router": "^2.0.0",
-    "rimraf": "^3.0.2",
-    "typescript": "^4.0.5"
+  "license": "MIT",
+  "author": {
+    "name": "s00d",
+    "email": "Virus191288@gmail.com",
+    "url": "https://s00d.github.io/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/s00d/vue-yandex-metrika-ts.git"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "type": "module",
+  "sideEffects": false,
+  "main": "dist/vue2.cjs",
+  "types": "dist/vue2.d.ts",
+  "module": "dist/vue2.mjs",
+  "exports": {
+    ".": {
+      "production": {
+        "types": "./dist/vue2.d.ts",
+        "default": "./dist/vue2.mjs"
+      },
+      "import": {
+        "types": "./dist/vue2.d.ts",
+        "default": "./dist/vue2.mjs"
+      },
+      "require": {
+        "types": "./dist/vue2.d.cts",
+        "default": "./dist/vue2.cjs"
+      },
+      "default": "./dist/vue2.mjs"
+    },
+    "./vue2": {
+      "production": {
+        "types": "./dist/vue2.d.ts",
+        "default": "./dist/vue2.mjs"
+      },
+      "import": {
+        "types": "./dist/vue2.d.ts",
+        "default": "./dist/vue2.mjs"
+      },
+      "require": {
+        "types": "./dist/vue2.d.cts",
+        "default": "./dist/vue2.cjs"
+      },
+      "default": "./dist/vue2.mjs"
+    },
+    "./vue3": {
+      "production": {
+        "types": "./dist/vue3.d.ts",
+        "default": "./dist/vue3.mjs"
+      },
+      "import": {
+        "types": "./dist/vue3.d.ts",
+        "default": "./dist/vue3.mjs"
+      },
+      "require": {
+        "types": "./dist/vue3.d.cts",
+        "default": "./dist/vue3.cjs"
+      },
+      "default": "./dist/vue3.mjs"
+    },
+    "./helpers": {
+      "production": {
+        "types": "./dist/helpers.d.ts",
+        "default": "./dist/helpers.mjs"
+      },
+      "import": {
+        "types": "./dist/helpers.d.ts",
+        "default": "./dist/helpers.mjs"
+      },
+      "require": {
+        "types": "./dist/helpers.d.cts",
+        "default": "./dist/helpers.cjs"
+      },
+      "default": "./dist/helpers.mjs"
+    },
+    "./package.json": "./package.json"
+  },
+  "typesVersions": {
+    "*": {
+      "vue2": [
+        "dist/vue2"
+      ],
+      "vue3": [
+        "dist/vue3"
+      ],
+      "helpers": [
+        "dist/helpers"
+      ]
+    }
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "clean": "rimraf dist",
+    "build": "npm run clean && vite build --mode vue2 && vite build --mode vue3 && vite build --mode helpers",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:dist": "vitest run --config vitest.dist.config.ts",
+    "check:package": "publint",
+    "ci": "npm run typecheck && npm run build && npm run test && npm run test:dist && npm run check:package",
+    "prepublishOnly": "npm run clean && npm run build && npm run test && npm run test:dist && npm run check:package"
   },
   "peerDependencies": {
-    "vue": ">=2.0.0"
+    "vue": "^2.6.0 || ^3.0.0",
+    "vue-router": "^3.0.0 || ^4.0.0 || ^5.0.0"
+  },
+  "peerDependenciesMeta": {
+    "vue-router": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@vue/test-utils": "^2.4.11",
+    "jsdom": "^29.1.1",
+    "publint": "^0.3.21",
+    "rimraf": "^6.1.3",
+    "typescript": "^5.9.3",
+    "vite": "^8.1.3",
+    "vite-plugin-dts": "^5.0.3",
+    "vitest": "^4.1.9",
+    "vue": "^3.5.39",
+    "vue-router": "^5.1.0",
+    "vue2": "npm:vue@2.7.16",
+    "vue-router3": "npm:vue-router@3.6.5"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "allowScripts": {
+    "esbuild": true,
+    "fsevents": true
   }
 }
