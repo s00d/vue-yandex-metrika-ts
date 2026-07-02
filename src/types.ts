@@ -37,6 +37,7 @@ export interface Config {
     triggerEvent?: boolean
   },
   router?: null|Router,
+  env?: string,
   scriptSrc?: 'https://mc.yandex.ru/metrika/tag.js',
   debug?: boolean,
   ignoreRoutes?: Array<string>,

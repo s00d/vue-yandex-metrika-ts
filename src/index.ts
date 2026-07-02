@@ -2,7 +2,6 @@ import Vue from 'vue';
 
 import { loadScript, createMetrika, startTracking } from './helpers'
 import {Config} from "./types";
-const debug = process.env.NODE_ENV === "production"
 
 export const defaultConfig: Config = {
   id: null,
@@ -20,6 +19,7 @@ export const defaultConfig: Config = {
     triggerEvent: false
   },
   router: null,
+  env: 'development',
   scriptSrc: 'https://mc.yandex.ru/metrika/tag.js',
   debug: false,
   ignoreRoutes: [],
@@ -34,7 +34,7 @@ function createConfig (config: Config) {
 function validateConfig (config: Config) {
   if (typeof document === 'undefined') {return}
   if (!config.id) {throw new Error('[vue-yandex-metrika] Please enter a Yandex Metrika tracking ID')}
-  if (!config.router && !debug) {
+  if (!config.router && config.env !== 'production') {
     return console.warn('[vue-yandex-metrika] Router is not passed, autotracking is disabled')
   }
 }
